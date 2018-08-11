@@ -6,7 +6,7 @@ var request = require('request');
  * 
  */
 const tookan_key = process.env.tookan_key; //tookan API key from the tookan setting panel
-const userid = process.env.userid;//tookan API key from the tookan user id you can get it from your profile
+const userid = process.env.tookan_userid;//tookan API key from the tookan user id you can get it from your profile
 const delimiter = '/'; //given to server as a user agent
 const main_domain = 'https://api.tookanapp.com';
 const version_of_api = 'v2'; // version of API thing before changing this

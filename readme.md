@@ -3,6 +3,9 @@
 this lib us using v2 of tookan to intagrate with you can find the API on following link https://tookanapi.docs.apiary.io
 
 ## Install
-```bash npm i readme-docs```
+> npm i tookan
 
+## Config the tookan library
+Set the environment variable where we keep the tookan key and the tookan user id the params are following
+`tookan_key` and `tookan_userid`
 
