@@ -1,0 +1,25 @@
+{
+  "name": "tookan",
+  "version": "1.0.0",
+  "description": "a library to intract with Tookan API v2, referance https://tookanapi.docs.apiary.io/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/npm-package-jilabaji/tookan.git"
+  },
+  "keywords": [
+    "tookan",
+    "tookan-library",
+    "tookan-intagration",
+    "delivery-platform"
+  ],
+  "author": "jilabaji <jilabaji@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/npm-package-jilabaji/tookan/issues"
+  },
+  "homepage": "https://gitlab.com/npm-package-jilabaji/tookan#README"
+}
