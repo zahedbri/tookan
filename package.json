@@ -1,6 +1,6 @@
 {
   "name": "tookan",
-  "version": "1.0.0.1",
+  "version": "1.0.0",
   "description": "a library to intract with Tookan API v2, referance https://tookanapi.docs.apiary.io/",
   "main": "index.js",
   "scripts": {
@@ -21,9 +21,5 @@
   "bugs": {
     "url": "https://gitlab.com/npm-package-jilabaji/tookan/issues"
   },
-  "homepage": "https://gitlab.com/npm-package-jilabaji/tookan#README",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "request": "^2.88.0"
-  }
+  "homepage": "https://gitlab.com/npm-package-jilabaji/tookan#README"
 }
