@@ -4,8 +4,11 @@ this lib us using v2 of tookan to intagrate with you can find the API on followi
 
 ## **Config the tookan library**
 Set the environment variable where we keep the tookan key and the tookan user id 
-the params are following
+
+save our tookan key with this env variable
 > tookan_key
+
+the user id you can get it in your tookan login
 > tookan_userid
 
 ## **Install**
