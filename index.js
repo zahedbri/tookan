@@ -1,5 +1,4 @@
 const axios = require("axios");
-var request = require('request');
 
 /** main configration for this lib
  *
