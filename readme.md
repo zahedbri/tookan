@@ -15,12 +15,12 @@ the params are following
 A simple example to create client
 ` let Tookan_help = require("tookan"); `
 
-## **Allfunctions**
-### ** Get all agents available **
+## **All Functions**
+###  Get all agents available 
 just call this method to get the available agents in our tookan
 > tookan_res = await Tookan_help.get_agents() 
 
-### ** Create a Delivery Task **
+###  Create a Delivery Task 
 Create a payload as follows
 
 ```
@@ -37,7 +37,7 @@ Create a payload as follows
 And send this payload to a tookan
 > tookan_res = await Tookan_help.create_delivery(payload) 
 
-### ** Create a Delivery Task **
+###  Create a Delivery Task 
 Create a payload as follows
 
 ```
@@ -55,7 +55,7 @@ Create a payload as follows
 And send this payload to a tookan
 > tookan_res = await Tookan_help.create_pickup(payload) 
 
-### ** Check the task by its job id **
+###  Check the task by its job id 
 Create a payload as follows
 
 ```  let payload = {
@@ -65,7 +65,7 @@ Create a payload as follows
 And send this payload to a tookan
 > tookan_res = await Tookan_help.check_task(payload) 
 
-### ** Check the task by its job id **
+###  Check the task by its job id 
 Create a payload as follows
 
 ```  let payload = {
