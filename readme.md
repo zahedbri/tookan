@@ -13,7 +13,7 @@ the params are following
 
 ## **Initialization**
 A simple example to create client
-` let Tookan_help = require("tookan"); `
+> let Tookan_help = require("tookan"); 
 
 ## **All Functions**
 ###  Get all agents available 
