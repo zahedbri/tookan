@@ -40,7 +40,7 @@ Create a payload as follows
 And send this payload to a tookan
 > tookan_res = await Tookan_help.create_delivery(payload) 
 
-###  Create a Delivery Task 
+###  Create a Pickup Task 
 Create a payload as follows
 
 ```
@@ -78,5 +78,28 @@ let payload = {
     } 
 ```
 
+###  Edit delivery task
+This api used to edit a task that has already been added.
+ Request Body Parameters : Every parameter is same as while creating a task the only 
+ parameter that should added while editing a task is job_id which required to identify the task.
+
+Create a Payload as follows
+
+``` 
+let payload = {
+        "job_id":"1582325102",
+        "customer_email":"john@example.com",
+        "customer_username":"John Doe",
+        "customer_phone":"+919999999999",
+        "customer_address":"Powai Lake, Powai, Mumbai, Maharashtra, India",
+        "latitude":"28.5494489",
+        "longitude":"77.2001368",
+        "job_description":"Beauty services",
+        "job_pickup_datetime":"2016-09-30 16:00:00",
+        "job_delivery_datetime":"2016-09-30 17:00:00",
+        "notify": 1
+    } 
+```
+
 And send this payload to a tookan
-> tookan_res = await Tookan_help.check_task_by_orderid(payload)
+> tookan_res = await Tookan_help.edit_delivery_task(payload)

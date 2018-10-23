@@ -331,6 +331,88 @@ let rm_task = async (payload) => {
     }
 };
 
+/** Edit Delivery Task Task
+ * 
+ * This api used to edit a task that has already been added.
+ * Request Body Parameters : Every parameter is same as while creating a task the only 
+ * parameter that should added while editing a task is shown below.
+ * 
+ * payload.order_id - Unique Id of the task
+ * payload.job_description - Task description like simple nots
+ * payload.job_delivery_phone - customer phone number 
+ * payload.job_delivery_datetime - date time to be delivered
+ * payload.job_delivery_address - delivery address
+ * payload.customer_username - name of the person to deliver
+ * payload.customer_email - email of the person to be deliver
+ * payload.latitude - lattitude of the location to be deliver
+ * payload.longitude - longitude of the location to be deliver
+ * payload.auto_assignment - (boolen) set this param true to allowcate the deliver man
+ * payload.notify - (boolen) set this param true to notify
+ * 
+ * @param {object} payload
+ */
+let edit_delivery_task = async (payload) => {
+    if (isObject(payload) && payload.hasOwnProperty('job_id')) {
+        let let_url = main_domain + delimiter + version_of_api + delimiter + 'edit_task';
+        try {
+            let options = {
+                method: 'post',
+                url: let_url,
+                data: {
+                    'api_key': tookan_key,
+                    'job_id':payload.job_id,
+                    'has_pickup':0,
+                    'has_delivery':1,
+                    'layout_type':0,
+                    'tracking_link':1,
+                    'timezone':'EST+0400',
+                    'auto_assignment':0,
+                    'notify':0,
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            if(payload.hasOwnProperty('job_description')){
+                options.data.job_description = payload.job_description;
+            } if(payload.hasOwnProperty('job_delivery_phone')){
+                options.data.customer_phone = payload.job_delivery_phone;
+            } if(payload.hasOwnProperty('job_delivery_datetime')){
+                options.data.job_delivery_datetime = payload.job_delivery_datetime;
+            } if(payload.hasOwnProperty('job_delivery_address')){
+                options.data.customer_address = payload.job_delivery_address;
+            } if(payload.hasOwnProperty('customer_username')){
+                options.data.customer_username = payload.customer_username;
+            } if(payload.hasOwnProperty('customer_email')){
+                options.data.customer_email = payload.customer_email;
+            } if(payload.hasOwnProperty('latitude')){
+                options.data.latitude = payload.latitude;
+            } if(payload.hasOwnProperty('longitude')){
+                options.data.longitude = payload.longitude;
+            } if(payload.hasOwnProperty('auto_assignment') && payload.auto_assignment == true ){
+                options.data.auto_assignment = 1;
+            } if(payload.hasOwnProperty('notify') && payload.notify == true ){
+                options.data.notify = 1;
+            }
+                        
+            let res = await axios(options);
+            if (res.status == 200) {
+                return res.data;
+            } else {
+                err.code = 5007
+                err.message = 'Response from Tooken is not succeess plz check the credentials)';
+                throw err;
+            }
+        } catch (error) {
+            throw error;
+        }
+    }else{
+        err.code = 5008
+        err.message = 'Input should be object and required parameters is job_id';
+        throw err;
+    }
+}
+
 module.exports = {
     get_agents,
     create_pickup,
@@ -338,4 +420,5 @@ module.exports = {
     check_task,
     check_task_by_orderid,
     rm_task,
+    edit_delivery_task,
 }
