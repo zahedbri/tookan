@@ -334,10 +334,10 @@ let rm_task = async (payload) => {
 /** Edit Delivery Task Task
  * 
  * This api used to edit a task that has already been added.
- * Request Body Parameters : Every parameter is same as while creating a task the only 
+ * Request Body Parameters : Every parameter is same as while creating a task 
  * parameter that should added while editing a task is shown below.
  * 
- * payload.order_id - Unique Id of the task
+ * payload.job_id - Unique job_id of the task
  * payload.job_description - Task description like simple nots
  * payload.job_delivery_phone - customer phone number 
  * payload.job_delivery_datetime - date time to be delivered
@@ -413,6 +413,88 @@ let edit_delivery_task = async (payload) => {
     }
 }
 
+/** Edit Pickup task
+ * 
+ * This api used to edit a task that has already been added.
+ * Request Body Parameters : Every parameter is same as while creating a task 
+ * parameter that should added while editing a task is shown below.
+ * 
+ * payload.job_id - Unique job_id of the task
+ * payload.job_description* - Task description like simple nots
+ * payload.job_pickup_phone* - Pickup phone number 
+ * payload.job_pickup_datetime* - date time to be pickup
+ * payload.job_pickup_address* - pickup address
+ * payload.job_pickup_name - name of the person to pickup
+ * payload.job_pickup_email - email of the person to be pickup
+ * payload.job_pickup_latitude - lattitude of the location to be pickedup
+ * payload.job_pickup_longitude - longitude of the location to be pickedup
+ * payload.auto_assignment - (boolen) set this param true to allowcate the deliver man
+ * payload.notify - (boolen) set this param true to notify
+ * 
+ * @param {object} payload 
+ */
+let edit_pickup_task = async (payload) => {
+    if (isObject(payload) && payload.hasOwnProperty('job_id')) {
+        let let_url = main_domain + delimiter + version_of_api + delimiter + 'edit_task';
+        try {
+            let options = {
+                method: 'post',
+                url: let_url,
+                data: {
+                    'api_key': tookan_key,
+                    'job_id':payload.job_id,
+                    'has_pickup':1,
+                    'has_delivery':0,
+                    'layout_type':0,
+                    'tracking_link':1,
+                    'timezone':'EST+0400',
+                    'auto_assignment':0,
+                    'notify':0,
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            if(payload.hasOwnProperty('job_description')){
+                options.data.job_description = payload.job_description;
+            }if(payload.hasOwnProperty('job_pickup_phone')){
+                options.data.job_pickup_phone = payload.job_pickup_phone;
+            }if(payload.hasOwnProperty('job_pickup_datetime')){
+                options.data.job_pickup_datetime = payload.job_pickup_datetime;
+            }if(payload.hasOwnProperty('job_pickup_address')){
+                options.data.job_pickup_address = payload.job_pickup_address;
+            }if(payload.hasOwnProperty('job_pickup_name')){
+                options.data.job_pickup_name = payload.job_pickup_name;
+            }if(payload.hasOwnProperty('job_pickup_email')){
+                options.data.job_pickup_email = payload.job_pickup_email;
+            }if(payload.hasOwnProperty('job_pickup_latitude')){
+                options.data.job_pickup_latitude = payload.job_pickup_latitude;
+            }if(payload.hasOwnProperty('job_pickup_longitude')){
+                options.data.job_pickup_longitude = payload.job_pickup_longitude;
+            }if(payload.hasOwnProperty('auto_assignment') && payload.auto_assignment == true ){
+                options.data.auto_assignment = 1;
+            }if(payload.hasOwnProperty('notify') && payload.notify == true ){
+                options.data.notify = 1;
+            }
+
+            let res = await axios(options);
+            if (res.status == 200) {
+                return res.data;
+            } else {
+                err.code = 5007
+                err.message = 'Response from Tooken is not succeess plz check the credentials)';
+                throw err;
+            }
+        } catch (error) {
+            throw error;
+        }
+    }else{
+        err.code = 5008
+        err.message = 'Input should be object and required parameters is job_id';
+        throw err;
+    }
+}
+
 module.exports = {
     get_agents,
     create_pickup,
@@ -421,4 +503,5 @@ module.exports = {
     check_task_by_orderid,
     rm_task,
     edit_delivery_task,
+    edit_pickup_task,
 }
