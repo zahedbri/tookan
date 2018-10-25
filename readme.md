@@ -69,7 +69,7 @@ let payload = {
 And send this payload to a tookan
 > tookan_res = await Tookan_help.check_task(payload) 
 
-###  Check the task by its job id 
+###  Check the task by its order_id
 Create a payload as follows
 
 ```  
@@ -77,6 +77,21 @@ let payload = {
         'order_id':"1582325102",
     } 
 ```
+And send this payload to a tookan
+> tookan_res = await Tookan_help.check_task_by_orderid(payload) 
+
+
+### Delete any task either Pickup/Devlivery
+Create a payload as follows
+
+```  
+let payload = {
+        'job_id':"61112352",
+    } 
+```
+And send this payload to a tookan
+> tookan_res = await Tookan_help.rm_task(payload) 
+
 
 ###  Edit delivery task
 This api used to edit a task that has already been added.
